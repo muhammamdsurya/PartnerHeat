@@ -7,6 +7,11 @@
     <title>PartnerHeat Produsen Elemen Pemanas Industri</title>
     <meta name="description"
         content="PartnerHeat produksi & distribusi elemen pemanas (heating element) untuk kebutuhan industri. Tubular, cartridge, band, immersion, infrared, dan custom heater.">
+
+    <!-- Latar hero = elemen LCP, dimuat lebih awal -->
+    <link rel="preload" as="image" href="banner.webp" media="(min-width:768px)">
+    <link rel="preload" as="image" href="banner-mobile.webp" media="(max-width:767.98px)">
+
     <style>
         @font-face {
             font-family: 'Outfit';
@@ -489,6 +494,32 @@
             background: radial-gradient(circle, rgba(217, 169, 74, .22) 0, rgba(217, 169, 74, 0) 70%)
         }
 
+        /* ── Latar foto hero ───────────────────────────────────────────────────── */
+        .hero-photo {
+            position: absolute;
+            inset: 0;
+            background: url("banner-mobile.webp") center/cover no-repeat
+        }
+
+        @media (min-width:768px) {
+            .hero-photo {
+                background-image: url("banner.webp")
+            }
+        }
+
+        /* Scrim gelap agar teks hero tetap terbaca di atas foto */
+        .hero-scrim {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(7, 13, 24, .88) 0, rgba(7, 13, 24, .74) 40%, rgba(7, 13, 24, .8) 72%, var(--navy-900) 100%)
+        }
+
+        @media (min-width:1024px) {
+            .hero-scrim {
+                background: linear-gradient(90deg, var(--navy-900) 0, rgba(7, 13, 24, .95) 46%, rgba(7, 13, 24, .84) 62%, rgba(7, 13, 24, .6) 80%, rgba(7, 13, 24, .46) 100%), linear-gradient(180deg, rgba(7, 13, 24, .5) 0, rgba(7, 13, 24, 0) 32%, rgba(7, 13, 24, .2) 68%, rgba(7, 13, 24, .85) 100%)
+            }
+        }
+
         .stage-bg {
             background: radial-gradient(120% 100% at 50% 42%, #1b2e4a 0, #080f1c 100%)
         }
@@ -737,11 +768,6 @@
         .mask-x {
             -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
             mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)
-        }
-
-        .coil-pulse {
-            animation: phCoil 2.8s ease-in-out infinite;
-            transform-origin: center
         }
 
         /* ── Panggung foto produk ──────────────────────────────────────────────── */
@@ -2070,18 +2096,6 @@
             }
         }
 
-        @keyframes phCoil {
-
-            0%,
-            to {
-                opacity: .55
-            }
-
-            50% {
-                opacity: 1
-            }
-        }
-
         #modal[hidden] {
             display: none !important
         }
@@ -2373,32 +2387,6 @@
         class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-gold focus:text-navy-900 focus:px-4 focus:py-2 focus:rounded-full focus:font-semibold">Lompat
         ke katalog produk</a>
 
-    <!-- ══════════ SHARED SVG DEFS ══════════ -->
-    <svg width="0" height="0" aria-hidden="true" style="position:absolute">
-        <defs>
-            <linearGradient id="gMetalV" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#8E9BAD" />
-                <stop offset=".35" stop-color="#EDF1F6" />
-                <stop offset=".68" stop-color="#95A2B3" />
-                <stop offset="1" stop-color="#C9D2DD" />
-            </linearGradient>
-            <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#F7E0AC" />
-                <stop offset=".45" stop-color="#D9A94A" />
-                <stop offset="1" stop-color="#8E661F" />
-            </linearGradient>
-            <linearGradient id="gHeat" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#FFD9A8" />
-                <stop offset=".45" stop-color="#F97316" />
-                <stop offset="1" stop-color="#B23F06" />
-            </linearGradient>
-            <radialGradient id="gHalo" cx="50%" cy="50%" r="50%">
-                <stop offset="0" stop-color="#F97316" stop-opacity=".45" />
-                <stop offset="1" stop-color="#F97316" stop-opacity="0" />
-            </radialGradient>
-        </defs>
-    </svg>
-
     <!-- ══════════ HEADER ══════════ -->
     <header id="site-header" class="site-header fixed top-0 inset-x-0 z-50 transition-all duration-300">
         <div class="shell">
@@ -2476,15 +2464,18 @@
 
         <!-- ══════════ HERO ══════════ -->
         <section id="beranda" class="relative min-h-[100svh] flex items-center pt-28 pb-20 overflow-hidden">
-            <div class="absolute inset-0 grid-bg opacity-60" aria-hidden="true"></div>
-            <div class="absolute -top-24 -left-24 w-[520px] h-[520px] glow-heat blur-2xl opacity-70"
+            <div class="hero-photo" aria-hidden="true"></div>
+            <div class="hero-scrim" aria-hidden="true"></div>
+            <div class="absolute inset-0 grid-bg opacity-40" aria-hidden="true"></div>
+            <div class="absolute -top-24 -left-24 w-[520px] h-[520px] glow-heat blur-2xl opacity-40"
                 aria-hidden="true"></div>
-            <div class="absolute top-1/4 -right-40 w-[620px] h-[620px] glow-gold blur-3xl" aria-hidden="true"></div>
+            <div class="absolute top-1/4 -right-40 w-[620px] h-[620px] glow-gold blur-3xl opacity-70"
+                aria-hidden="true"></div>
             <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-navy-900 to-transparent"
                 aria-hidden="true"></div>
 
             <div class="shell relative z-10">
-                <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-14 lg:gap-10 items-center">
+                <div class="max-w-[680px]">
 
                     <div>
 
@@ -2549,59 +2540,6 @@
                                     teknis</p>
                             </div>
                         </dl>
-                    </div>
-
-                    <!-- Hero visual -->
-                    <div class="reveal relative">
-                        <div class="relative aspect-square max-w-[460px] mx-auto">
-                            <div class="absolute inset-6 rounded-full border border-gold/15" aria-hidden="true"></div>
-                            <div class="absolute inset-16 rounded-full border border-gold/10" aria-hidden="true">
-                            </div>
-                            <div class="absolute inset-0 glow-heat blur-xl" aria-hidden="true"></div>
-                            <svg viewBox="0 0 400 400" class="relative w-full h-full" role="img"
-                                aria-label="Ilustrasi elemen pemanas industri berbentuk kumparan dengan pijar panas">
-                                <ellipse cx="200" cy="205" rx="150" ry="150"
-                                    fill="url(#gHalo)" />
-                                <!-- flange -->
-                                <rect x="140" y="300" width="120" height="26" rx="6"
-                                    fill="url(#gMetalV)" />
-                                <rect x="140" y="300" width="120" height="8" rx="4" fill="#EEF2F7"
-                                    opacity=".55" />
-                                <circle cx="158" cy="313" r="4.5" fill="#5C6B80" />
-                                <circle cx="242" cy="313" r="4.5" fill="#5C6B80" />
-                                <!-- tubes -->
-                                <path d="M170 300 V150 a30 30 0 0 1 60 0 V300" fill="none" stroke="url(#gMetalV)"
-                                    stroke-width="17" stroke-linecap="round" />
-                                <path d="M170 300 V150 a30 30 0 0 1 60 0 V300" fill="none" stroke="#FFFFFF"
-                                    stroke-width="4" stroke-linecap="round" opacity=".28"
-                                    transform="translate(-4,0)" />
-                                <!-- coil -->
-                                <g class="coil-pulse" stroke="url(#gHeat)" stroke-width="9" stroke-linecap="round"
-                                    fill="none">
-                                    <path d="M148 232 h104" />
-                                    <path d="M148 254 h104" />
-                                    <path d="M148 276 h104" />
-                                </g>
-                                <g stroke="#FFD9A8" stroke-width="2.5" stroke-linecap="round" fill="none"
-                                    opacity=".85">
-                                    <path d="M152 229 h96" />
-                                    <path d="M152 251 h96" />
-                                    <path d="M152 273 h96" />
-                                </g>
-                                <!-- heat arrow -->
-                                <path d="M200 118 V64 M200 58 l-14 16 M200 58 l14 16" stroke="url(#gGold)"
-                                    stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
-                                    fill="none" />
-                                <!-- terminals -->
-                                <path d="M176 326 v26 M224 326 v26" stroke="#7F8DA1" stroke-width="7"
-                                    stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <div
-                            class="absolute -bottom-2 left-1/2 -translate-x-1/2 card rounded-2xl px-5 py-3 text-center w-max">
-                            <p class="font-display text-[13px] font-semibold text-gold-light tracking-wide">Tubular ·
-                                Cartridge · Band · Custom</p>
-                        </div>
                     </div>
 
                 </div>
