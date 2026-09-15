@@ -5,8 +5,8 @@
        smooth scroll, scrollspy, scroll reveal.
        ========================================================================== */
 
-        const WA_NUMBER = '6281220000729'; // +62 812-2060-9071
-        const WA_DISPLAY = '0812 2000 0729';
+        const WA_NUMBER = '082298590235'; // +62 812-2060-9071
+        const WA_DISPLAY = '0822 9859 0235';
 
         const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
         const orderText = (name) =>
@@ -367,35 +367,60 @@
             }
         ];
 
+        /* Kartu tahapan berlatar foto.
+           img/alt = foto latar,  z/zo = zoom & titik fokus crop (lihat .proc-photo),
+           wide    = kartu melebar penuh (tahap 03), dipakai karena fotonya berupa
+                     strip empat panel yang butuh bingkai lebar.                    */
         const PROCESS = [{
                 n: '01',
                 t: 'Konsultasi & Gambar Teknis',
                 d: 'Pengumpulan data mesin, media, daya, dan dimensi. Hasilnya berupa gambar kerja yang disetujui bersama.',
-                i: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h3"/>'
+                i: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h3"/>',
+                img: 'img/konsultasi_gambar.png',
+                alt: 'Dua teknisi membahas gambar kerja elemen pemanas di layar laptop dan cetakan gambar teknis',
+                z: 1.42,
+                zo: '8% center'
             },
             {
                 n: '02',
                 t: 'Pemilihan Material',
                 d: 'Penentuan selubung, kawat pemanas, isolator, dan terminal sesuai suhu serta media kerja.',
-                i: '<path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/>'
+                i: '<path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/>',
+                img: 'img/pemilihan_material.png',
+                alt: 'Teknisi memeriksa pipa selubung stainless, gulungan kawat nikelin, dan isolator keramik di meja kerja',
+                z: 1.5,
+                zo: '20% center'
             },
             {
                 n: '03',
                 t: 'Perakitan & Pembentukan',
                 d: 'Pengisian isolasi, penekanan (swaging), pembengkokan bentuk, dan pemasangan terminal.',
-                i: '<path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6"/><path d="m14.7 6.3 3-3 3 3-3 3z"/>'
+                i: '<path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6"/><path d="m14.7 6.3 3-3 3 3-3 3z"/>',
+                img: 'img/perakitan.png',
+                alt: 'Empat tahap perakitan: penyiapan pipa, penekanan swaging, pembengkokan bentuk, dan pemasangan terminal',
+                z: 1.04,
+                zo: 'center',
+                wide: true
             },
             {
                 n: '04',
                 t: 'Pengujian & QC',
                 d: 'Uji tahanan, kontinuitas, isolasi, dan kebocoran arus. Unit yang tidak lolos tidak dikirim.',
-                i: '<path d="M9 11l2.5 2.5L16 8"/><circle cx="12" cy="12" r="9"/>'
+                i: '<path d="M9 11l2.5 2.5L16 8"/><circle cx="12" cy="12" r="9"/>',
+                img: 'img/uji.png',
+                alt: 'Operator mengukur unit dengan probe penguji di meja QC, hasil uji tampil pada layar alat ukur',
+                z: 1.16,
+                zo: '46% 52%'
             },
             {
                 n: '05',
                 t: 'Pengemasan & Pengiriman',
                 d: 'Pelabelan spesifikasi, pengemasan aman, dan pengaturan pengiriman ke lokasi pabrik.',
-                i: '<path d="M16 16h3l2-5-4-4h-1"/><path d="M3 6h13v10H3z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>'
+                i: '<path d="M16 16h3l2-5-4-4h-1"/><path d="M3 6h13v10H3z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+                img: 'img/pengemasan.png',
+                alt: 'Petugas menempel label spesifikasi, mengemas kardus, dan memuat palet ke truk pengiriman',
+                z: 1.08,
+                zo: '50% 46%'
             }
         ];
 
@@ -520,17 +545,21 @@
 
         /* ── Render: proses produksi ───────────────────────────────────────────── */
         (function renderProcess() {
-            document.getElementById('process-list').innerHTML = PROCESS.map((s, i) => `
-    <li class="reveal relative">
-      <div class="card card-hover rounded-2xl p-6 h-full">
-        <div class="flex items-center justify-between mb-5">
-          <span class="grid place-items-center w-12 h-12 rounded-xl bg-heat/10 border border-heat/30 text-heat-light">${icon(s.i)}</span>
-          <span class="font-display text-[26px] font-extrabold text-white/[.08] leading-none">${s.n}</span>
+            document.getElementById('process-list').innerHTML = PROCESS.map((s) => `
+    <li class="reveal proc-item${s.wide ? ' proc-item--wide' : ''}">
+      <article class="proc-card card-hover${s.wide ? ' proc-card--wide' : ''}">
+        <img src="${s.img}" alt="${escAttr(s.alt)}" class="proc-photo"
+             style="--z:${s.z};--zo:${s.zo}" loading="lazy" decoding="async">
+        <span class="proc-scrim" aria-hidden="true"></span>
+        <span class="proc-step" aria-hidden="true">${s.n}</span>
+        <div class="proc-body">
+          <span class="proc-badge">${icon(s.i, 20)}</span>
+          <h3 class="font-display font-bold text-silver leading-snug proc-title">
+            <span class="sr-only">Tahap ${s.n}: </span>${s.t}
+          </h3>
+          <p class="proc-desc">${s.d}</p>
         </div>
-        <h3 class="font-display text-[16.5px] font-bold text-silver mb-2 leading-snug">${s.t}</h3>
-        <p class="text-[14px] leading-relaxed text-silver-dim">${s.d}</p>
-      </div>
-      ${i < PROCESS.length - 1 ? `<span class="hidden md:block absolute top-1/2 -right-2 w-4 h-px bg-gold/30" aria-hidden="true"></span>` : ''}
+      </article>
     </li>`).join('');
         })();
 

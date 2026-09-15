@@ -858,6 +858,220 @@
             }
         }
 
+        /* ── Kartu tahapan berlatar foto (section Proses Produksi) ──────────────
+           Foto mengisi seluruh kartu; teks duduk di atas scrim gelap agar tetap
+           terbaca. --z / --zo bekerja sama seperti .cred-photo: mengatur zoom dan
+           titik fokus crop, dipakai untuk membuang panel/teks bawaan pada gambar. */
+        .proc-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px
+        }
+
+        .proc-item {
+            min-width: 0
+        }
+
+        @media (min-width:640px) {
+            .proc-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .proc-item--wide {
+                grid-column: 1 / -1
+            }
+        }
+
+        @media (min-width:1024px) {
+            .proc-grid {
+                grid-template-columns: repeat(6, minmax(0, 1fr))
+            }
+
+            .proc-item {
+                grid-column: span 3
+            }
+
+            .proc-item--wide {
+                grid-column: 1 / -1
+            }
+        }
+
+        .proc-card {
+            position: relative;
+            display: block;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 22px;
+            background: var(--navy-800);
+            border: 1px solid var(--line);
+            isolation: isolate
+        }
+
+        .proc-card--wide {
+            height: 280px
+        }
+
+        @media (min-width:640px) {
+            .proc-card {
+                height: 330px
+            }
+
+            .proc-card--wide {
+                height: 340px
+            }
+        }
+
+        @media (min-width:1024px) {
+            .proc-card {
+                height: 360px
+            }
+
+            .proc-card--wide {
+                height: 420px
+            }
+        }
+
+        .proc-photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(var(--z, 1));
+            transform-origin: var(--zo, center);
+            transition: transform .55s cubic-bezier(.22, 1, .36, 1)
+        }
+
+        .card-hover:hover .proc-photo,
+        .card-hover:focus-within .proc-photo {
+            transform: scale(calc(var(--z, 1) * 1.05))
+        }
+
+        /* Scrim: gelap penuh di bawah (alas teks), tipis di atas (nomor tahap). */
+        .proc-scrim {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg,
+                    rgba(7, 13, 24, .5) 0,
+                    rgba(7, 13, 24, .1) 24%,
+                    rgba(7, 13, 24, .35) 55%,
+                    rgba(7, 13, 24, .8) 75%,
+                    rgba(7, 13, 24, .94) 88%,
+                    rgba(7, 13, 24, .97) 100%)
+        }
+
+        /* Kartu melebar: teks hanya menempati sisi kiri, sisi kanan foto tetap terbuka
+           sehingga scrim mendatar ditambahkan hanya di kartu ini. */
+        .proc-card--wide .proc-scrim {
+            background:
+                linear-gradient(180deg, rgba(7, 13, 24, .4) 0, rgba(7, 13, 24, .05) 32%, rgba(7, 13, 24, .3) 62%, rgba(7, 13, 24, .8) 84%, rgba(7, 13, 24, .94) 100%),
+                linear-gradient(90deg, rgba(7, 13, 24, .62) 0, rgba(7, 13, 24, .44) 36%, rgba(7, 13, 24, .12) 64%, rgba(7, 13, 24, 0) 100%)
+        }
+
+        /* Nomor tahap sebagai angka besar tembus pandang di pojok kanan atas. */
+        .proc-step {
+            position: absolute;
+            top: 14px;
+            right: 20px;
+            font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+            font-size: 46px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -.02em;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(240, 206, 133, .5);
+            text-shadow: 0 2px 14px rgba(7, 13, 24, .8);
+            transition: -webkit-text-stroke-color .25s ease
+        }
+
+        .card-hover:hover .proc-step {
+            -webkit-text-stroke-color: rgba(240, 206, 133, .9)
+        }
+
+        @media (min-width:1024px) {
+            .proc-step {
+                top: 18px;
+                right: 24px;
+                font-size: 58px
+            }
+        }
+
+        .proc-body {
+            position: absolute;
+            inset: auto 0 0 0;
+            padding: 0 22px 22px;
+            max-width: 100%
+        }
+
+        .proc-card--wide .proc-body {
+            max-width: 560px
+        }
+
+        @media (min-width:1024px) {
+            .proc-body {
+                padding: 0 26px 26px
+            }
+        }
+
+        .proc-badge {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            margin-bottom: 14px;
+            border-radius: 13px;
+            background: rgba(249, 115, 22, .16);
+            border: 1px solid rgba(249, 115, 22, .38);
+            color: #fdba74;
+            box-shadow: 0 8px 20px rgba(7, 13, 24, .6);
+            backdrop-filter: blur(6px);
+            transition: background-color .25s ease, border-color .25s ease
+        }
+
+        .card-hover:hover .proc-badge {
+            background: rgba(249, 115, 22, .28);
+            border-color: rgba(249, 115, 22, .6)
+        }
+
+        .proc-title {
+            color: var(--silver);
+            font-size: 17px;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 10px rgba(7, 13, 24, .9)
+        }
+
+        .proc-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--muted);
+            text-shadow: 0 1px 10px rgba(7, 13, 24, .9)
+        }
+
+        @media (min-width:1024px) {
+            .proc-title {
+                font-size: 18.5px
+            }
+
+            .proc-card--wide .proc-title {
+                font-size: 21px
+            }
+
+            .proc-desc {
+                font-size: 14.5px
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .proc-photo,
+            .card-hover:hover .proc-photo,
+            .card-hover:focus-within .proc-photo {
+                transition: none;
+                transform: scale(var(--z, 1))
+            }
+        }
+
         .fab {
             opacity: 0;
             visibility: hidden;
