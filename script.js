@@ -25,7 +25,7 @@
             infrared: 'img/infrared.png',
             silicone: 'img/silicone_rubber.png',
             castin: 'img/castin_heater.jpeg',
-            thermocouple: 'img/thermocouple.jpeg',
+            thermocouple: 'img/thermocouple1.jpeg',
             tcCable: 'img/kabel_thermocouple.jpeg',
             controller: 'img/thermo_digital.png'
         };

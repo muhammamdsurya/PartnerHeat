@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://vingoldtrillion.com/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+
+    <!-- Hero -->
+    <image:image><image:loc>https://vingoldtrillion.com/img/banner.webp</image:loc></image:image>
+
+    <!-- Katalog produk (dirender oleh script.js) -->
+    <image:image><image:loc>https://vingoldtrillion.com/img/tubular_u.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/cartridge_heater.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/band_heater.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/band_ceramic.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/immersion.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/finnet.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/coil_heater.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/coil.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/infrared.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/silicone_rubber.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/castin_heater.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/thermocouple1.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/kabel_thermocouple.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/thermo_digital.png</image:loc></image:image>
+
+    <!-- Layanan & proses produksi -->
+    <image:image><image:loc>https://vingoldtrillion.com/img/konsultasi.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/custom.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/uji.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/dukungan.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/konsultasi_gambar.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/pemilihan_material.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/perakitan.png</image:loc></image:image>
+    <image:image><image:loc>https://vingoldtrillion.com/img/pengemasan.png</image:loc></image:image>
+  </url>
+</urlset>
