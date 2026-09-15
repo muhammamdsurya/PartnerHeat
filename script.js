@@ -5,7 +5,7 @@
        smooth scroll, scrollspy, scroll reveal.
        ========================================================================== */
 
-        const WA_NUMBER = '082298590235'; // +62 812-2060-9071
+        const WA_NUMBER = '6282298590235'; // +62 812-2060-9071
         const WA_DISPLAY = '0822 9859 0235';
 
         const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
