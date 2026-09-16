@@ -208,13 +208,13 @@
                 ]
             },
             {
-                id: 'pancake',
-                name: 'Pancake / Hot Plate Heater',
+                id: 'element-heater',
+                name: 'Element Heater',
                 cat: 'tubular',
                 catLabel: 'Tubular',
                 art: 'spiral',
                 short: 'Elemen spiral datar untuk pemanas pelat dan kompor listrik.',
-                desc: 'Elemen tubular yang dibentuk menjadi spiral pipih (pancake) sehingga panas tersebar merata pada satu bidang datar. Dilengkapi bracket penahan agar jarak antar lilitan tetap terjaga. Banyak dipakai sebagai pemanas pelat, kompor listrik industri, serta pemanas dasar tangki dan wadah proses.',
+                desc: 'Elemen tubular yang dibentuk menjadi spiral pipih sehingga panas tersebar merata pada satu bidang datar. Dilengkapi bracket penahan agar jarak antar lilitan tetap terjaga. Banyak dipakai sebagai pemanas pelat, kompor listrik industri, serta pemanas dasar tangki dan wadah proses.',
                 specs: [
                     ['Diameter spiral', '100 mm – 300 mm (custom)'],
                     ['Diameter tabung', '6,5 mm / 8 mm'],
