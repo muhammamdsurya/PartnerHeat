@@ -5,10 +5,10 @@
        smooth scroll, scrollspy, scroll reveal.
        ========================================================================== */
 
-        const WA_NUMBER = '6282298590235'; // +62 812-2060-9071
+        const WA_NUMBER = '6282298590235'; // +62 822-9859-0235 (utama)
         const WA_DISPLAY = '0822 9859 0235';
 
-        const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+        const waLink = (text, number = WA_NUMBER) => `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
         const orderText = (name) =>
             `Halo PartnerHeat, saya tertarik dengan produk *${name}*. Mohon informasi ketersediaan, spesifikasi, dan penawaran harganya. Terima kasih.`;
 
@@ -657,7 +657,7 @@
         document.querySelectorAll('.wa-link').forEach(a => {
             const text = a.dataset.waText ||
                 `Halo PartnerHeat, saya ingin bertanya mengenai produk elemen pemanas industri.`;
-            a.href = waLink(text);
+            a.href = waLink(text, a.dataset.waNumber);
         });
         document.getElementById('wa-mobile').href = waLink(
             'Halo PartnerHeat, saya ingin bertanya mengenai produk elemen pemanas industri.');
